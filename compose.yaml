@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=sms
+    volumes:
+      - /home/vishnu/postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8000:8080"
+    depends_on:
+      - postgres
